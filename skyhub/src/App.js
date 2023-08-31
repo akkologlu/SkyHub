@@ -1,9 +1,11 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CurrentLocationWeather from "./components/CurrentLocationWeather";
 import SideBar from "./components/SideBar";
 import { Routes, Route } from "react-router-dom";
 import Search from "./components/Search";
+import Favorites from "./components/Favorites";
+import CityDetail from "./components/CityDetail";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<CurrentLocationWeather />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/detail" element={<CityDetail />} />
         </Routes>
       </div>
     </div>

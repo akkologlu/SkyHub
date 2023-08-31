@@ -3,6 +3,7 @@ import { getForecastByCurrentLocation } from "../api/api";
 import { FaTemperatureHalf, FaSun } from "react-icons/fa6";
 import { WiHumidity } from "react-icons/wi";
 import { FiWind } from "react-icons/fi";
+import Spinner from "./Spinner";
 
 function CurrentLocationWeather() {
   const [forecast, setForecast] = useState([]);
@@ -33,7 +34,7 @@ function CurrentLocationWeather() {
     return arr[2] + "/" + arr[1];
   };
   return (
-    <div className=" ml-6">
+    <div className="ml-6 w-[80vw]">
       {fetched ? (
         <div className="flex xl:flex-nowrap flex-wrap">
           <div className="">
@@ -52,7 +53,11 @@ function CurrentLocationWeather() {
                 </div>
               </div>
               <div className="">
-                <img src={forecast.current.condition.icon} className="h-60" />
+                <img
+                  alt="icon"
+                  src={forecast.current.condition.icon}
+                  className="h-60"
+                />
               </div>
             </div>
             <div className="  mt-12 p-6 rounded-3xl bg-[#ebecf0]">
@@ -64,6 +69,7 @@ function CurrentLocationWeather() {
                 <div className="todayForecast">
                   <p className="todayForecastTime">6:00 AM</p>
                   <img
+                    alt="icon"
                     src={
                       forecast.forecast.forecastday[0].hour[6].condition.icon
                     }
@@ -81,6 +87,7 @@ function CurrentLocationWeather() {
                 <div className="todayForecast">
                   <p className="todayForecastTime">9:00 AM</p>
                   <img
+                    alt="icon"
                     src={
                       forecast.forecast.forecastday[0].hour[9].condition.icon
                     }
@@ -98,6 +105,7 @@ function CurrentLocationWeather() {
                 <div className="todayForecast">
                   <p className="todayForecastTime">12:00 PM</p>
                   <img
+                    alt="icon"
                     src={
                       forecast.forecast.forecastday[0].hour[12].condition.icon
                     }
@@ -115,6 +123,7 @@ function CurrentLocationWeather() {
                 <div className="todayForecast">
                   <p className="todayForecastTime">3:00 PM</p>
                   <img
+                    alt="icon"
                     src={
                       forecast.forecast.forecastday[0].hour[15].condition.icon
                     }
@@ -132,6 +141,7 @@ function CurrentLocationWeather() {
                 <div className="todayForecast">
                   <p className="todayForecastTime">6:00 PM</p>
                   <img
+                    alt="icon"
                     src={
                       forecast.forecast.forecastday[0].hour[18].condition.icon
                     }
@@ -149,6 +159,7 @@ function CurrentLocationWeather() {
                 <div className="todayForecast">
                   <p className="todayForecastTime">9:00 PM</p>
                   <img
+                    alt="icon"
                     src={
                       forecast.forecast.forecastday[0].hour[21].condition.icon
                     }
@@ -263,7 +274,9 @@ function CurrentLocationWeather() {
           </div>
         </div>
       ) : (
-        <div>loading..</div>
+        <div className="w-[80vw] flex justify-center items-center h-screen">
+          <Spinner />
+        </div>
       )}
     </div>
   );
