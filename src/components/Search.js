@@ -23,6 +23,7 @@ import warsaw from "../assets/cities/warsaw.jpg";
 import beijing from "../assets/cities/beijing.jpg";
 import CityDetail from "./CityDetail";
 import { IoArrowBackOutline } from "react-icons/io5";
+import LazyLoad from "react-lazy-load";
 
 function Search() {
   const [cityName, setCityName] = useState("");
@@ -219,11 +220,14 @@ function Search() {
                         });
                       }}
                     >
-                      <img
-                        src={city.img}
-                        alt="City "
-                        className="rounded-3xl w-64 h-36"
-                      />
+                      <LazyLoad>
+                        <img
+                          src={city.img}
+                          alt="City"
+                          className="rounded-3xl w-64 h-36"
+                        />
+                      </LazyLoad>
+
                       <p className="text-xl font-bold text-gray-800">
                         {city.name}
                       </p>
