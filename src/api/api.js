@@ -27,7 +27,7 @@ const getForecastByCurrentLocation = async (lat, long) => {
 const getForecastByCityName = async (CityName) => {
   try {
     const response = await axios.get(
-      `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${CityName}&days=7&aqi=no&alerts=no`
+      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${CityName}&days=7&aqi=no&alerts=no`
     );
     return response.data;
   } catch (error) {
@@ -38,7 +38,7 @@ const getForecastByCityName = async (CityName) => {
 const autoComplete = async (CityName) => {
   try {
     const response = await axios.get(
-      `http://api.weatherapi.com/v1/search.json?key=${process.env.REACT_APP_API_KEY}&q=${CityName}`
+      `https://api.weatherapi.com/v1/search.json?key=${process.env.REACT_APP_API_KEY}&q=${CityName}`
     );
     return response.data;
   } catch (error) {
