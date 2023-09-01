@@ -4,16 +4,16 @@ import { addFavCity } from "../store/slices/FavCitySlice";
 import { FaTemperatureHalf, FaSun } from "react-icons/fa6";
 import { WiHumidity } from "react-icons/wi";
 import { FiWind } from "react-icons/fi";
+import Spinner from "./Spinner";
 
 function CityDetail({ forecast }) {
   const splitter = (str) => {
     const arr = str.split("-");
     return arr[2] + "/" + arr[1];
   };
-  console.log(forecast);
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className=" w-[80vw] md:block flex items-center flex-col">
       <div className="flex justify-end">
         <button
           onClick={() => dispatch(addFavCity(forecast))}
@@ -24,7 +24,7 @@ function CityDetail({ forecast }) {
       </div>
       <div className="flex xl:flex-nowrap flex-wrap">
         <div>
-          <div className="flex justify-between mt-4 p-12">
+          <div className="flex justify-center text-center md:text-start md:justify-between mt-4 p-12">
             <div className="flex flex-col space-y-20">
               <div className="flex flex-col space-y-5">
                 <p className="text-5xl font-bold text-gray-800">
@@ -42,7 +42,7 @@ function CityDetail({ forecast }) {
               <img
                 alt="Weather icon"
                 src={forecast.current.condition.icon}
-                className="h-60"
+                className="h-60 md:block hidden"
               />
             </div>
           </div>
@@ -50,9 +50,9 @@ function CityDetail({ forecast }) {
             <p className="text-xl font-bold text-gray-500">TODAY'S FORECAST</p>
             {forecast.forecast.forecastday.length > 0 ? (
               <>
-                <div className="flex items-center lg:space-x-10 sm:space-y-0 space-y-3 space-x-0  flex-wrap sm:flex-nowrap md:space-x-4 sm:space-x-2 justify-center mt-8">
+                <div className="flex items-center lg:space-x-10 sm:space-y-0 space-y-0 space-x-0  flex-wrap sm:flex-nowrap md:space-x-4 sm:space-x-2 justify-center mt-8">
                   <div className="todayForecast">
-                    <p className="todayForecastTime">6:00 AM</p>
+                    <p className="todayForecastTime">6:00</p>
                     <img
                       alt="Weather Icon"
                       src={
@@ -68,9 +68,9 @@ function CityDetail({ forecast }) {
                     </p>
                   </div>
 
-                  <hr className="w-1 h-36  border border-l-gray-300" />
+                  <hr className="w-1 h-36  border border-l-gray-300 hidden md:block" />
                   <div className="todayForecast">
-                    <p className="todayForecastTime">9:00 AM</p>
+                    <p className="todayForecastTime">9:00</p>
                     <img
                       alt="Weather Icon"
                       src={
@@ -85,10 +85,10 @@ function CityDetail({ forecast }) {
                       °
                     </p>
                   </div>
-                  <hr className="w-1 h-36   border border-l-gray-300" />
+                  <hr className="w-1 h-36  border border-l-gray-300 hidden md:block" />
 
                   <div className="todayForecast">
-                    <p className="todayForecastTime">12:00 PM</p>
+                    <p className="todayForecastTime">12:00</p>
                     <img
                       alt="Weather Icon"
                       src={
@@ -103,10 +103,10 @@ function CityDetail({ forecast }) {
                       °
                     </p>
                   </div>
-                  <hr className="w-1 h-36  border border-l-gray-300" />
+                  <hr className="w-1 h-36  border border-l-gray-300 hidden md:block" />
 
                   <div className="todayForecast">
-                    <p className="todayForecastTime">3:00 PM</p>
+                    <p className="todayForecastTime">15:00</p>
                     <img
                       alt="Weather Icon"
                       src={
@@ -121,10 +121,9 @@ function CityDetail({ forecast }) {
                       °
                     </p>
                   </div>
-                  <hr className="w-1 h-36  border border-l-gray-300" />
-
+                  <hr className="w-1 h-36  border border-l-gray-300 hidden md:block" />
                   <div className="todayForecast">
-                    <p className="todayForecastTime">6:00 PM</p>
+                    <p className="todayForecastTime">18:00</p>
                     <img
                       alt="Weather Icon"
                       src={
@@ -139,10 +138,9 @@ function CityDetail({ forecast }) {
                       °
                     </p>
                   </div>
-                  <hr className="w-1 h-36 border border-l-gray-300" />
-
+                  <hr className="w-1 h-36  border border-l-gray-300 hidden md:block" />
                   <div className="todayForecast">
-                    <p className="todayForecastTime">9:00 PM</p>
+                    <p className="todayForecastTime">21:00</p>
                     <img
                       alt="Weather Icon"
                       src={
@@ -164,37 +162,37 @@ function CityDetail({ forecast }) {
                 <div className="flex items-center lg:space-x-10 sm:space-y-0 space-y-3 space-x-0  flex-wrap sm:flex-nowrap md:space-x-4 sm:space-x-2 justify-center mt-8">
                   <div className="todayForecast">
                     <p className="todayForecastTime">6:00 AM</p>
-                    <p>API'deki sorundan dolayı veri bazen gelmiyor</p>
+                    {<Spinner />}
                   </div>
 
                   <hr className="w-1 h-36  border border-l-gray-300" />
                   <div className="todayForecast">
                     <p className="todayForecastTime">9:00 AM</p>
-                    <p>API'deki sorundan dolayı veri bazen gelmiyor</p>
+                    {<Spinner />}
                   </div>
                   <hr className="w-1 h-36   border border-l-gray-300" />
 
                   <div className="todayForecast">
                     <p className="todayForecastTime">12:00 PM</p>
-                    <p>API'deki sorundan dolayı veri bazen gelmiyor</p>
+                    {<Spinner />}{" "}
                   </div>
                   <hr className="w-1 h-36  border border-l-gray-300" />
 
                   <div className="todayForecast">
                     <p className="todayForecastTime">3:00 PM</p>
-                    <p>API'deki sorundan dolayı veri bazen gelmiyor</p>
+                    {<Spinner />}{" "}
                   </div>
                   <hr className="w-1 h-36  border border-l-gray-300" />
 
                   <div className="todayForecast">
                     <p className="todayForecastTime">6:00 PM</p>
-                    <p>API'deki sorundan dolayı veri bazen gelmiyor</p>
+                    {<Spinner />}{" "}
                   </div>
                   <hr className="w-1 h-36 border border-l-gray-300" />
 
                   <div className="todayForecast">
                     <p className="todayForecastTime">9:00 PM</p>
-                    <p>API'deki sorundan dolayı veri bazen gelmiyor</p>
+                    {<Spinner />}{" "}
                   </div>
                 </div>
               </>
@@ -203,44 +201,42 @@ function CityDetail({ forecast }) {
           <div className=" mt-12 p-6 rounded-3xl bg-[#ebecf0]">
             <p className="text-xl font-bold text-gray-500">AIR CONDITIONS</p>
             <div className="flex ">
-              <div className="mt-8 flex flex-col space-y-12 flex-1">
+              <div className="mt-8 flex flex-col space-y-4 md:space-y-12 flex-1">
                 <div className="flex items-center space-x-2">
-                  <FaTemperatureHalf className="text-4xl text-gray-600" />
+                  <FaTemperatureHalf className="text-2xl text-gray-600" />
                   <div className="space-y-3">
-                    <p className="text-2xl font-bold text-gray-600">
-                      Real Feel
-                    </p>
-                    <p className="text-5xl font-bold text-gray-700">
+                    <p className="text-lg font-bold text-gray-600">Real Feel</p>
+                    <p className="text-lg md:text-5xl font-bold text-gray-700">
                       {Math.round(forecast.current.temp_c)}°
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <WiHumidity className="text-4xl text-gray-600" />
+                  <WiHumidity className="text-2xl text-gray-600" />
                   <div className="space-y-3">
-                    <p className="text-2xl font-bold text-gray-600">Humidity</p>
-                    <p className="text-5xl font-bold text-gray-700">
+                    <p className="text-lg font-bold text-gray-600">Humidity</p>
+                    <p className="text-lg md:text-5xl font-bold text-gray-700">
                       {Math.round(forecast.current.humidity)}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-col space-y-12  flex-1">
+              <div className="mt-8 flex flex-col space-y-4 md:space-y-12  flex-1">
                 <div className="flex items-center space-x-2">
-                  <FiWind className="text-4xl text-gray-600" />
+                  <FiWind className="text-2xl text-gray-600" />
                   <div className="space-y-3">
-                    <p className="text-2xl font-bold text-gray-600">Wind</p>
-                    <p className="text-5xl font-bold text-gray-700">
+                    <p className="text-lg font-bold text-gray-600">Wind</p>
+                    <p className="text-lg md:text-5xl font-bold text-gray-700">
                       {Math.round(forecast.current.wind_kph)} km/h
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <FaSun className="text-4xl text-gray-600" />
+                  <FaSun className="text-2xl text-gray-600" />
                   <div className="space-y-3">
-                    <p className="text-2xl font-bold text-gray-600">UV Index</p>
-                    <p className="text-5xl font-bold text-gray-700">
+                    <p className="text-lg font-bold text-gray-600">UV Index</p>
+                    <p className="text-lg md:text-5xl font-bold text-gray-700">
                       {Math.round(forecast.current.uv)}
                     </p>
                   </div>
@@ -258,14 +254,14 @@ function CityDetail({ forecast }) {
               return (
                 <div key={index}>
                   <div className="flex flex-col space-y-4 py-8 justify-center">
-                    <div className="flex items-center space-x-8">
+                    <div className="flex items-center space-x-8 lg">
                       <div style={{ flex: 1 }}>
                         <p className="text-lg font-bold text-gray-500">
                           {splitter(day.date)}
                         </p>
                       </div>
                       <div
-                        className="flex items-center space-x-2"
+                        className="flex flex-col md:flex-row items-center space-x-2"
                         style={{ flex: 4 }}
                       >
                         <img src={day.day.condition.icon} alt="Weather Icon" />

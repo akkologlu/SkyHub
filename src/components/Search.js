@@ -162,10 +162,10 @@ function Search() {
     },
   ];
   return (
-    <div className="ml-6">
+    <div className="ml-0 md:ml-6 flex md:block items-center flex-col">
       <form onSubmit={handleSubmit} className="mt-6">
         <input
-          className="border border-gray-300 rounded-3xl p-4 pl-8 text-2xl w-96 focus:outline-none"
+          className="border border-gray-300 rounded-3xl p-4 pl-8 text-2xl md:w-96  w-64 focus:outline-none"
           type="text"
           placeholder="Search"
           name="search"
@@ -189,7 +189,7 @@ function Search() {
 
       {fetched ? (
         <>
-          <div>
+          <div className="w-full">
             <button
               onClick={() => setFetched(false)}
               className="bg-gray-300 px-4 py-2 rounded-md mt-4  hover:bg-gray-400"
@@ -201,12 +201,12 @@ function Search() {
         </>
       ) : (
         <>
-          <div className="w-[80vw]  flex flex-wrap">
+          <div className="w-[80vw] flex flex-wrap justify-center">
             <div className="flex flex-col space-y-4">
-              <p className="text-2xl font-bold text-gray-600 my-4">
+              <p className="text-2xl font-bold text-gray-600 my-4 text-center md:text-start">
                 POPULAR CITIES
               </p>
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap md:justify-start justify-center">
                 {cities.map((city, index) => {
                   return (
                     <div

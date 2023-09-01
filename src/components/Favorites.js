@@ -14,10 +14,10 @@ function Favorites() {
   };
 
   return (
-    <div className="w-[80vw] h-fit flex flex-wrap">
+    <div className="w-[80vw] h-screen flex md:justify-start justify-center flex-wrap">
       {selectedCity ? (
         <div>
-          <div className="ml-8 mt-4">
+          <div className="ml-0 md:ml-8 mt-4">
             <button
               onClick={() => setSelectedCity(null)}
               className="bg-gray-300 px-4 py-2 rounded-md mt-4  hover:bg-gray-400"
@@ -25,17 +25,17 @@ function Favorites() {
               <IoArrowBackOutline />
             </button>
           </div>
-          <div className="ml-8">
+          <div className="ml-0 md:ml-8">
             <CityDetail forecast={selectedCity} />
           </div>
         </div>
       ) : (
-        <div className="w-[80vw] flex flex-wrap">
+        <div className="w-[80vw] h-fit flex justify-center md:justify-start flex-wrap">
           {favorites.favCity.length > 0 ? (
             favorites.favCity.map((city, index) => (
               <div
                 key={index}
-                className="w-96 h-fit ml-8 cursor-pointer relative"
+                className="w-96 h-fit ml-0 md:ml-8 cursor-pointer relative"
               >
                 <div
                   onClick={() => handleCityClick(city)}
